@@ -2,4 +2,6 @@
 
 open advent_of_code_2022
 
-Day1.solution () 
+Day1.solution ()
+
+Day2.solution () 
