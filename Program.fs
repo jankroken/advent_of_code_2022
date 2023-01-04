@@ -6,4 +6,6 @@ Day1.solution ()
 
 Day2.solution ()
 
-Day3.solution () 
+Day3.solution ()
+
+Day4.solution () 
