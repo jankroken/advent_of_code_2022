@@ -25,7 +25,7 @@ let task2 () =
         let m = m |> int &&& 3 
         let hand = (c + 2 + m )  % 3
         hand + 1 + (3*m)
-    let answer2 = rounds |> List.map scores
+    let answer2 = rounds |> List.map scores |> List.sum 
     printfn $"Day 2: Answer 2: {answer2}"
     
 
