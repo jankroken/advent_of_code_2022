@@ -53,3 +53,8 @@ let columns<'T> (map: XYMap<'T>) : List<List<XY>> =
     let xys = map.Map.Keys |> Seq.toList 
     xs |> List.map (fun col -> xys |> List.filter (fun (x,_) -> x = col))
 
+let distance4X ((x1,y1):XY) ((x2,y2):XY) =
+   abs(x1-x2) + abs(y1-y2)
+
+let distance9X ((x1,y1):XY) ((x2,y2):XY) =
+    max (abs(x1-x2)) (abs(y1-y2))
