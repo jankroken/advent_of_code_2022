@@ -3,8 +3,15 @@ module advent_of_code_2022.Common
 open System.IO
 open System 
 
+type XY = int*int
+
 let rec example (day: int) : string list =
     Path.Combine(__SOURCE_DIRECTORY__, $"input/example_{day}.txt")
+    |> File.ReadAllLines
+    |> Array.toList
+
+let rec input (day: int) : string list =
+    Path.Combine(__SOURCE_DIRECTORY__, $"input/input_{day}.txt")
     |> File.ReadAllLines
     |> Array.toList
 
@@ -28,6 +35,12 @@ let (|I64|_|) (s:string) =
     | true,value -> Some(value)
     | false,_ -> None
 
+
+                    
+let charToInt (c:char) = c - '0' |> int
+let charToInt64 (c:char) = c - '0' |> int64
+
 let rec exp (i:int) (p:int) =
     if i = 0 then 1
     else i*(exp i (p - 1))
+    

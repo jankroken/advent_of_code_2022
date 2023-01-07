@@ -14,4 +14,6 @@ Day5.solution ()
 
 Day6.solution ()
 
-Day7.solution () 
+Day7.solution ()
+
+Day8.solution () 
