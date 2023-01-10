@@ -35,7 +35,23 @@ let (|I64|_|) (s: string) =
     | true, value -> Some(value)
     | false, _ -> None
 
+let numbersInString (s: string) : int64 list =
+    let s = s.ToCharArray() |> Array.toList
+    let isDigit c = c >= '0' && c <= '9'
+    let toDigit c = c - '0' |> int64
 
+    let rec nums (curr: Option<int64>) (chars: char list) : int64 list =
+        match curr, chars with
+        | Some (n), [] -> [ n ]
+        | None, [] -> []
+        | None, d :: rest when isDigit d -> nums (Some(toDigit d)) rest
+        | Some (n), d :: rest when isDigit d -> nums (Some(n * 10L + (toDigit d))) rest
+        | None, _ :: rest -> nums None rest
+        | Some (n), _ :: rest -> n :: nums None rest
+
+    nums None s
+
+let firstNumberInString = numbersInString >> List.head 
 
 let charToInt (c: char) = c - '0' |> int
 let charToInt64 (c: char) = c - '0' |> int64
@@ -48,6 +64,8 @@ let rec exp (i: int) (p: int) =
 let unit (x: int) =
     if x = 0 then 0
     elif x > 0 then 1
-    else -1
+    else - 1
 
 let unit2D ((x, y): XY) : XY = unit x, unit y
+
+exception NotImplemented of string

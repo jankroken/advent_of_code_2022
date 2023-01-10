@@ -43,7 +43,6 @@ let task2 () =
     let lines = pixels |> List.map toChar |> List.chunkBySize 40 |> List.map (String.concat "")
     printfn $"Day 10: Answer 2: "
     lines |> List.map (printfn "  %s")
-    
 
 let solution () =
     task1 ()
